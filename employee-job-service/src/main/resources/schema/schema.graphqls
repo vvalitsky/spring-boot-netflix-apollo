@@ -1,0 +1,14 @@
+type Employee @key(fields: "id")
+@extends {
+    id: Long! @external
+    employeeJob: EmployeeJob
+}
+
+type EmployeeJob {
+    id: Long!
+    name: String!
+    address: String!
+    experience: Int!
+}
+
+scalar Long

@@ -1,0 +1,50 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+">
+    <property name="schema" value="employee"/>
+
+    <changeSet id="create_employee_table" author="vvalitsky">
+        <createTable tableName="employee" schemaName="employee">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="employee_pk"
+                />
+            </column>
+
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="middle_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <sql>
+            insert into employee.employee (id, first_name, last_name, middle_name)
+            values (1, 'Viktor', 'Lozhkin', 'Vilkovich');
+
+            insert into employee.employee (id, first_name, last_name, middle_name)
+            values (2, 'Oleg', 'Nozhkin', 'Stulovich');
+
+            insert into employee.employee (id, first_name, last_name, middle_name)
+            values (3, 'Gleb', 'Polkin', 'Dverovich');
+
+            SELECT SETVAL('employee.employee_id_seq',MAX(id) + 1) FROM employee.employee;
+
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
