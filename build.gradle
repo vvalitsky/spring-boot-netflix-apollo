@@ -8,6 +8,7 @@ buildscript {
         liquibase_core_version = "4.4.0"
         postgresql_version = '42.2.14'
         graphql_extended_scalars_version = '16.0.1'
+        netflix_graphql_version = '4.6.0'
     }
 
     repositories {
@@ -56,7 +57,7 @@ allprojects {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
         implementation "org.springframework.boot:spring-boot-starter-web"
-        implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
+        implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$netflix_graphql_version"))
         // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-scalars
         implementation("com.graphql-java:graphql-java-extended-scalars:$graphql_extended_scalars_version")
         implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
