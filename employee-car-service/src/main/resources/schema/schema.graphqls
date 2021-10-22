@@ -1,0 +1,15 @@
+type Employee @key(fields: "id")
+@extends {
+    id: Long! @external
+    cars: [EmployeeCar!]!
+}
+
+type EmployeeCar {
+    id: Long!
+    model: String!
+    brand: String!
+    releaseDate: DateTime!
+}
+
+scalar Long
+scalar DateTime

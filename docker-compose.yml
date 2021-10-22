@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    container_name: spring-boot-postgresql-gql
+    image: postgres:latest
+    volumes:
+      - gql_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=gql
+      - POSTGRES_USER=gql
+      - POSTGRES_DB=gql
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+volumes:
+  gql_db: {}

@@ -1,0 +1,16 @@
+{
+  "name": "api-gateway-nodejs",
+  "main": "gateway.js",
+  "scripts": {
+    "start-gateway": "nodemon gateway.js"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "nodemon": "latest"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^0.21.4",
+    "apollo-server": "^2.19.0",
+    "graphql": "^15.4.0"
+  }
+}
