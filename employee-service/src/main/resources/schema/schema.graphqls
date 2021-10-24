@@ -1,13 +1,18 @@
 type Query {
-    getEmployeeInfo(employeeId: Long!): Employee
-    getEmployeesInfo(employeesIds: [Long!]!): [Employee!]!
+    "Get employee info by employee id"
+    getEmployeeInfo(employeeId: Int!): Employee
+    "Get employees info by employees ids"
+    getEmployeesInfo(employeesIds: [Int!]!): [Employee!]!
 }
 
+"Employee info"
 type Employee @key(fields: "id") {
-    id: Long!
+    "Employee identifier"
+    id: Int!
+    "Employee first name"
     firstName: String!
+    "Employee middle name"
     middleName: String!
+    "Employee last name"
     lastName: String!
 }
-
-scalar Long

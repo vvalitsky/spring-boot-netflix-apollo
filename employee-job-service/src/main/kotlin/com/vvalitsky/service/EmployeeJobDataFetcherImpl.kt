@@ -26,8 +26,10 @@ class EmployeeJobDataFetcherImpl(
      */
     @DgsEntityFetcher(name = "Employee")
     override fun employee(values: Map<String?, Any?>): Employee {
+
         return Employee(
-            id = (values["id"] as Int).toLong()
+            values["id"] as Int,
+            null
         )
     }
 
@@ -41,6 +43,7 @@ class EmployeeJobDataFetcherImpl(
     override fun employeeJobFetcher(dataFetchingEnvironment: DgsDataFetchingEnvironment): EmployeeJob? {
         // Filled employee context
         val employee: Employee = dataFetchingEnvironment.getSource()
+
         return employeeJobRepository.findByEmployeeId(employeeId = employee.id)?.toDto()
     }
 }

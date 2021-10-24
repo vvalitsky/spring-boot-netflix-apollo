@@ -10,7 +10,7 @@
     <changeSet id="create_employee_table" author="vvalitsky">
         <createTable tableName="employee" schemaName="employee">
 
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints
                         primaryKey="true"
                         primaryKeyName="employee_pk"

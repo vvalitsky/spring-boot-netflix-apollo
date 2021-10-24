@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository
  *
  * @author Vladislav Valitsky
  */
-interface EmployeeRepository : JpaRepository<Employee, Long> {
-    fun findAllByIdIn(employeesIds: List<Long>): List<Employee>
+interface EmployeeRepository : JpaRepository<Employee, Int> {
+    fun findAllByIdIn(employeesIds: List<Int>): List<Employee>
 }

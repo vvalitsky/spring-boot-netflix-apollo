@@ -22,7 +22,6 @@ buildscript {
         classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlin_version"
-        classpath "com.netflix.graphql.dgs.codegen:graphql-dgs-codegen-gradle:$netflix_gql_codegen_version"
     }
 }
 
@@ -44,7 +43,6 @@ allprojects {
     apply plugin: "kotlin-allopen"
     apply plugin: "kotlin-spring"
     apply plugin: "org.jlleitschuh.gradle.ktlint"
-    apply plugin: 'com.netflix.dgs.codegen'
 
     ktlint {
         filter {
@@ -57,7 +55,10 @@ allprojects {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
         implementation "org.springframework.boot:spring-boot-starter-web"
+
         implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$netflix_graphql_version"))
+
+        // Netflix DGS
         // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-scalars
         implementation("com.graphql-java:graphql-java-extended-scalars:$graphql_extended_scalars_version")
         implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")

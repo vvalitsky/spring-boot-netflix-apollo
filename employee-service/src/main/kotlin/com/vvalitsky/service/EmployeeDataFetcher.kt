@@ -12,16 +12,16 @@ interface EmployeeDataFetcher {
     /**
      * Get employee info.
      *
-     * @param employeeId - employee id [Long]
+     * @param employeeId - employee id [Int]
      * @return return [Employee]
      */
-    fun getEmployeeInfo(employeeId: Long): Employee?
+    fun getEmployeeInfo(employeeId: Int): Employee?
 
     /**
      * Get employees info.
      *
-     * @param employeesIds - employees ids [List] [Long]
+     * @param employeesIds - employees ids [List] [Int]
      * @return return [List] [Employee]
      */
-    fun getEmployeesInfo(employeesIds: List<Long>): List<Employee>?
+    fun getEmployeesInfo(employeesIds: List<Int>): List<Employee>?
 }

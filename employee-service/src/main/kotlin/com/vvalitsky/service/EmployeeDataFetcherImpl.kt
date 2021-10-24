@@ -20,22 +20,22 @@ class EmployeeDataFetcherImpl(
     /**
      * Get employee info.
      *
-     * @param employeeId - employee id [Long]
+     * @param employeeId - employee id [Int]
      * @return return [Employee]
      */
     @DgsQuery
-    override fun getEmployeeInfo(@InputArgument employeeId: Long): Employee? {
+    override fun getEmployeeInfo(@InputArgument employeeId: Int): Employee? {
         return employeeRepository.findByIdOrNull(employeeId)?.toDto()
     }
 
     /**
      * Get employees info.
      *
-     * @param employeesIds - employees ids [List] [Long]
+     * @param employeesIds - employees ids [List] [Int]
      * @return return [List] [Employee]
      */
     @DgsQuery
-    override fun getEmployeesInfo(employeesIds: List<Long>): List<Employee>? {
+    override fun getEmployeesInfo(employeesIds: List<Int>): List<Employee>? {
         return employeeRepository.findAllByIdIn(employeesIds).map { it.toDto() }
     }
 }

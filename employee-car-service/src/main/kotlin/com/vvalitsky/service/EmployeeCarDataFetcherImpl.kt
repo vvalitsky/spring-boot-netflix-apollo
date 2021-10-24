@@ -27,8 +27,8 @@ class EmployeeCarDataFetcherImpl(
     @DgsEntityFetcher(name = "Employee")
     override fun employee(values: Map<String?, Any?>): Employee {
         return Employee(
-            id = (values["id"] as Int).toLong(),
-            cars = listOf()
+            values["id"] as Int,
+            listOf()
         )
     }
 
@@ -42,6 +42,7 @@ class EmployeeCarDataFetcherImpl(
     override fun employeeCarsFetcher(dataFetchingEnvironment: DgsDataFetchingEnvironment): List<EmployeeCar> {
         // Filled employee context
         val employee: Employee = dataFetchingEnvironment.getSource()
+
         return employeeCarRepository.findByEmployeeId(employeeId = employee.id).map { it.toDto() }
     }
 }

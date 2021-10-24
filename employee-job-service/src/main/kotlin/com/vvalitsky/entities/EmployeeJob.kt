@@ -1,5 +1,7 @@
 package com.vvalitsky.entities
 
+import com.vvalitsky.entities.generated.types.EmployeeJob
+import org.hibernate.Hibernate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -21,7 +23,7 @@ data class EmployeeJob(
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    var id: Int = 0,
 
     /**
      * Employee job address.
@@ -45,15 +47,31 @@ data class EmployeeJob(
      * Employee id.
      */
     @Column(name = "employee_id")
-    var employeeId: Long,
+    var employeeId: Int,
 
 ) {
-    fun toDto(): com.vvalitsky.entities.generated.types.EmployeeJob {
-        return com.vvalitsky.entities.generated.types.EmployeeJob(
-            id = this.id,
-            address = this.address,
-            name = this.name,
-            experience = this.experience
+    fun toDto(): EmployeeJob {
+
+        return EmployeeJob(
+            this.id,
+            this.address,
+            this.name,
+            this.experience
         )
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as EmployeeJob
+
+        return id == other.id
+    }
+
+    override fun hashCode(): Int = id.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return "(id = $id , address = $address , name = $name , experience = $experience , employeeId = $employeeId )"
     }
 }
