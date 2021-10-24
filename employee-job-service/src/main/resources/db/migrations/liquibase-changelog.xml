@@ -12,7 +12,7 @@
     <changeSet id="create_employee_job_table" author="vvalitsky">
         <createTable tableName="employee_job" schemaName="employee_job">
 
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints
                         primaryKey="true"
                         primaryKeyName="employee_job_pk"
@@ -31,7 +31,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="employee_id" type="bigint">
+            <column name="employee_id" type="int">
                 <constraints nullable="false"/>
             </column>
 

@@ -1,5 +1,7 @@
 package com.vvalitsky.entities
 
+import com.vvalitsky.entities.generated.types.EmployeeCar
+import org.hibernate.Hibernate
 import java.time.OffsetDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -22,7 +24,7 @@ data class EmployeeCar(
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    var id: Int = 0,
 
     /**
      * Employee car model.
@@ -46,15 +48,31 @@ data class EmployeeCar(
      * Employee id.
      */
     @Column(name = "employee_id")
-    var employeeId: Long,
+    var employeeId: Int,
 
 ) {
-    fun toDto(): com.vvalitsky.entities.generated.types.EmployeeCar {
-        return com.vvalitsky.entities.generated.types.EmployeeCar(
-            id = this.id,
-            model = this.model,
-            brand = this.brand,
-            releaseDate = this.releaseDate
+    fun toDto(): EmployeeCar {
+
+        return EmployeeCar(
+            this.id,
+            this.model,
+            this.brand,
+            this.releaseDate
         )
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as EmployeeCar
+
+        return id == other.id
+    }
+
+    override fun hashCode(): Int = id.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return "(id = $id , model = $model , brand = $brand , releaseDate = $releaseDate , employeeId = $employeeId )"
     }
 }

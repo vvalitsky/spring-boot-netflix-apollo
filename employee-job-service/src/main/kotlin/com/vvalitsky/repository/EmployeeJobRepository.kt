@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository
  *
  * @author Vladislav Valitsky
  */
-interface EmployeeJobRepository : JpaRepository<EmployeeJob, Long> {
-    fun findByEmployeeId(employeeId: Long): EmployeeJob?
+interface EmployeeJobRepository : JpaRepository<EmployeeJob, Int> {
+    fun findByEmployeeId(employeeId: Int): EmployeeJob?
 }

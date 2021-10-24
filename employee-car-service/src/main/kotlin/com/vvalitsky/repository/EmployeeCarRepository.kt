@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository
  *
  * @author Vladislav Valitsky
  */
-interface EmployeeCarRepository : JpaRepository<EmployeeCar, Long> {
-    fun findByEmployeeId(employeeId: Long): List<EmployeeCar>
+interface EmployeeCarRepository : JpaRepository<EmployeeCar, Int> {
+    fun findByEmployeeId(employeeId: Int): List<EmployeeCar>
 }
