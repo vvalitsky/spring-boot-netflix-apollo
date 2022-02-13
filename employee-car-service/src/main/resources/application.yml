@@ -29,3 +29,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     defer-datasource-initialization: false
 
+application:
+  datasources:
+    - sql-init-file: classpath:schema.sql
+      datasource-url: ${spring.datasource.url}

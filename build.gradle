@@ -1,14 +1,14 @@
 buildscript {
 
     ext {
-        kotlin_version = '1.5.10'
-        spring_boot_version = '2.5.1'
-        netflix_gql_codegen_version = '4.6.4'
+        kotlin_version = '1.6.10'
+        spring_boot_version = '2.6.3'
+        netflix_gql_codegen_version = '5.1.16'
         ktlint_gradle_version = "10.1.0"
         liquibase_core_version = "4.4.0"
         postgresql_version = '42.2.14'
-        graphql_extended_scalars_version = '16.0.1'
-        netflix_graphql_version = '4.6.0'
+        graphql_extended_scalars_version = '2022-01-08T22-46-25-c2e844f'
+        netflix_graphql_version = '4.9.20'
     }
 
     repositories {
