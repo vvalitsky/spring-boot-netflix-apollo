@@ -4,6 +4,7 @@ import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsData
 import com.netflix.graphql.dgs.DgsDataFetchingEnvironment
 import com.netflix.graphql.dgs.DgsEntityFetcher
+import com.netflix.graphql.dgs.DgsQuery
 import com.vvalitsky.entities.generated.types.Car
 import com.vvalitsky.entities.generated.types.Employee
 import com.vvalitsky.repository.CarRepository
@@ -17,6 +18,17 @@ import com.vvalitsky.repository.CarRepository
 class EmployeeCarDataFetcherImpl(
     private val employeeCarRepository: CarRepository
 ) : EmployeeCarDataFetcher {
+
+    /**
+     * Employee cars fetcher.
+     *
+     * @param employeeId - employee id [Int]
+     * @return - will return list [List] of employee cars [Car]
+     */
+    @DgsQuery
+    override fun getEmployeeCarsByEmployeeId(employeeId: Int): List<Car> {
+        return employeeCarRepository.findByEmployeeId(employeeId = employeeId).map { it.toDto() }
+    }
 
     /**
      * Employee context filler.
