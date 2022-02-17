@@ -16,7 +16,7 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "employee", schema = "employee")
-data class Employee(
+class Employee(
 
     /**
      * Employee id.

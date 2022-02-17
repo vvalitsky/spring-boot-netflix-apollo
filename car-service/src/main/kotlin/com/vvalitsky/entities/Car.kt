@@ -17,7 +17,7 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "car", schema = "car")
-data class Car(
+class Car(
 
     /**
      * Car id.
