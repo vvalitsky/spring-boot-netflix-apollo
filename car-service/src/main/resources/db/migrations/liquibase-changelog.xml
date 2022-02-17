@@ -1,0 +1,94 @@
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+">
+
+    <property name="schema" value="employee_car"/>
+
+    <changeSet id="create_employee_car_table" author="vvalitsky">
+        <createTable tableName="car" schemaName="car">
+
+            <column name="id" type="int" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="car_pk"
+                />
+            </column>
+
+            <column name="model" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="brand" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="release_date" type="timestamp with timezone" defaultValueComputed="NOW()"/>
+
+        </createTable>
+
+        <createTable tableName="employee_car" schemaName="car">
+
+            <column name="car_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="employee_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <sql>
+            insert into car.car (id, model, brand, release_date)
+            values (1, 'X6', 'BMW', '2021-01-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (2, '718 Cayman', 'Porsche', '2021-02-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (3, '718 Cayman GTS 4.0', 'Porsche', '2021-03-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (4, '718 Boxter GTS 4.0', 'Porsche', '2021-03-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (5, 'Granta', 'Lada', '2021-03-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (6, 'X-Ray', 'Lada', '2021-01-01');
+
+            insert into car.car (id, model, brand, release_date)
+            values (7, 'Tiggo 9Pro', 'Cherry', '2021-01-01');
+
+            SELECT SETVAL('car.car_id_seq',MAX(id) + 1) FROM car.car;
+
+            insert into car.employee_car (car_id, employee_id)
+            values (1, 2);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (2, 1);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (3, 3);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (4, 2);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (5, 1);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (6, 3);
+
+            insert into car.employee_car (car_id, employee_id)
+            values (7, 3);
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
