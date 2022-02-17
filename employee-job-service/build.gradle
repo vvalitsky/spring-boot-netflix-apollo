@@ -1,9 +1,0 @@
-plugins {
-    id "com.netflix.dgs.codegen" apply(true)
-}
-
-generateJava{
-    schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
-    packageName = 'com.vvalitsky.entities.generated' // The package name to use to generate sources
-    generateClient = false // Enable generating the type safe query API
-}
