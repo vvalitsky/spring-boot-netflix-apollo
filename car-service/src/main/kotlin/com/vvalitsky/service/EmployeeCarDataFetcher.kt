@@ -12,6 +12,14 @@ import com.vvalitsky.entities.generated.types.Employee
 interface EmployeeCarDataFetcher {
 
     /**
+     * Employee cars fetcher.
+     *
+     * @param employeeId - employee id [Int]
+     * @return - will return list [List] of employee cars [Car]
+     */
+    fun getEmployeeCarsByEmployeeId(employeeId: Int): List<Car>
+
+    /**
      * Employee context filler.
      *
      * @param values - employee context fields [Map]
